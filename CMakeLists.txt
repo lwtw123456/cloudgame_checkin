@@ -81,9 +81,3 @@ else()
         target_link_options(cloudgame_checkin PRIVATE -Wl,--gc-sections)
     endif()
 endif()
-
-cmake -S . -B build ^
-  -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake ^
-  -DVCPKG_TARGET_TRIPLET=x64-windows-static ^
-  -G "NMake Makefiles" ^
-  -DCMAKE_BUILD_TYPE=Release
