@@ -175,9 +175,8 @@ static std::string fetch_cloudgame_version() {
 
 } // namespace util
 
-class HttpSession; // forward declaration
+class HttpSession;
 
-// ==================== Geetest / Aigis ====================
 namespace geetest {
 static std::string json_scalar_to_string(
     const json& obj,
