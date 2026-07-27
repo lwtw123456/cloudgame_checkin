@@ -220,7 +220,7 @@ static std::string aes_cbc_encrypt_hex(const std::string& plaintext,
             (const unsigned char*)key.data(), iv) != 1)
         throw std::runtime_error("EVP_EncryptInit_ex failed");
 
-    EVP_CIPHER_CTX_set_padding(ctx, 0); // 我们手动 padding
+    EVP_CIPHER_CTX_set_padding(ctx, 0);
 
     std::vector<unsigned char> out(padded.size() + block);
     int out_len1 = 0, out_len2 = 0;
@@ -1039,7 +1039,7 @@ public:
 	struct Response {
 		int         status = 0;
 		std::string body;
-		std::string aigis_header;  // 存储 x-rpc-aigis 响应头
+		std::string aigis_header;
 		json parse_json() const { return json::parse(body); }
 	};
 
