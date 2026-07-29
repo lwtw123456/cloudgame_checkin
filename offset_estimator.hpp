@@ -159,7 +159,6 @@ inline DecodedImage decode(
     return image;
 }
 
-// 对应 OpenCV 的 BORDER_REFLECT_101。
 inline int reflect101(int position, int length) {
     if (length <= 1) {
         return 0;
@@ -229,14 +228,13 @@ inline GrayImage to_gray(
 inline GrayImage gradient_magnitude(
     const GrayImage& gray
 ) {
-    // OpenCV Scharr X。
+
     static constexpr int scharr_x[3][3] = {
         {-3,   0,  3},
         {-10,  0, 10},
         {-3,   0,  3},
     };
 
-    // OpenCV Scharr Y。
     static constexpr int scharr_y[3][3] = {
         {-3, -10, -3},
         { 0,   0,  0},
@@ -373,10 +371,6 @@ inline std::vector<std::uint8_t> erode_mask_3x3(
         0
     );
 
-    /*
-     * OpenCV morphologyDefaultBorderValue 对腐蚀操作
-     * 等价于边界外为 255，因此越界位置直接跳过。
-     */
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             bool keep = true;
